@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你的职场人格 | 12题看清职场里的真实模样</title>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+/* ===== 基础重置 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #f5f0e8;
+  background: #1a1033;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 背景氛围 ===== */
+.bg-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(168, 147, 212, 0.25), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 80% 90%, rgba(212, 163, 115, 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(232, 180, 184, 0.1), transparent 70%),
+    linear-gradient(160deg, #1a1033 0%, #2d1b4e 50%, #1e1538 100%);
+}
+.bg-stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1.5px 1.5px at 80% 20%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.15), transparent),
+    radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1.5px 1.5px at 10% 60%, rgba(255,255,255,0.15), transparent);
+  pointer-events: none;
+}
+
+/* ===== 视图容器 ===== */
+.view {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.view.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* ===== 首页 ===== */
+.landing-eyebrow {
+  font-size: 13px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #d4a373;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+.landing-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(36px, 7vw, 64px);
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #f5f0e8 0%, #e8b4b8 50%, #d4a373 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.landing-subtitle {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(245, 240, 232, 0.7);
+  text-align: center;
+  max-width: 420px;
+  margin-bottom: 48px;
+  font-weight: 300;
+}
+.landing-visual {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 48px;
+  background: linear-gradient(135deg, rgba(212, 163, 115, 0.3), rgba(168, 147, 212, 0.3));
+  border: 1px solid rgba(212, 163, 115, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.landing-visual::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 163, 115, 0.2);
+}
+.landing-visual::after {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 163, 115, 0.1);
+}
+.landing-visual svg {
+  width: 48px;
+  height: 48px;
+  color: #d4a373;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 48px;
+  background: linear-gradient(135deg, #d4a373, #c49360);
+  color: #1a1033;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Noto Sans SC', sans-serif;
+  letter-spacing: 2px;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212, 163, 115, 0.3);
+}
+.landing-tags {
+  margin-top: 40px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.landing-tag {
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(245,240,232,0.6);
+}
+
+/* ===== 答题页 ===== */
+.quiz-header {
+  width: 100%;
+  max-width: 560px;
+  margin-bottom: 40px;
+}
+.quiz-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(245,240,232,0.5);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.quiz-progress-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d4a373, #e8b4b8);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.quiz-question {
+  width: 100%;
+  max-width: 560px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 36px;
+  text-align: center;
+}
+.quiz-options {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.quiz-option {
+  padding: 20px 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(245,240,232,0.85);
+  text-align: left;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.quiz-option:hover {
+  background: rgba(212, 163, 115, 0.1);
+  border-color: rgba(212, 163, 115, 0.3);
+  transform: translateX(4px);
+}
+.quiz-option.selected {
+  background: rgba(212, 163, 115, 0.15);
+  border-color: #d4a373;
+}
+.quiz-option-letter {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  font-size: 12px;
+  margin-right: 12px;
+  color: #d4a373;
+  font-weight: 600;
+}
+.quiz-question.fade-out {
+  animation: fadeOutUp 0.3s ease forwards;
+}
+.quiz-options.fade-out {
+  animation: fadeOutUp 0.3s ease forwards;
+}
+.quiz-question.fade-in {
+  animation: fadeInDown 0.4s ease;
+}
+.quiz-options.fade-in {
+  animation: fadeInDown 0.4s ease 0.1s backwards;
+}
+@keyframes fadeOutUp {
+  to { opacity: 0; transform: translateY(-20px); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 结果页 ===== */
+.result-view {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.result-badge {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  position: relative;
+}
+.result-badge::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.result-badge svg {
+  width: 40px;
+  height: 40px;
+}
+.result-eyebrow {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: rgba(245,240,232,0.5);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.result-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(32px, 6vw, 48px);
+  font-weight: 900;
+  margin-bottom: 8px;
+  text-align: center;
+  line-height: 1.2;
+}
+.result-name-en {
+  font-size: 14px;
+  color: rgba(245,240,232,0.5);
+  letter-spacing: 3px;
+  margin-bottom: 28px;
+  text-align: center;
+  font-weight: 300;
+}
+.result-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+  max-width: 400px;
+}
+.result-tag {
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(245,240,232,0.8);
+}
+.result-desc {
+  width: 100%;
+  max-width: 480px;
+  font-size: 16px;
+  line-height: 1.9;
+  color: rgba(245,240,232,0.75);
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+.result-sections {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.result-section {
+  padding: 24px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+.result-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.result-section-title .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.result-section p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(245,240,232,0.7);
+  font-weight: 300;
+}
+.result-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.btn-secondary {
+  padding: 14px 32px;
+  background: transparent;
+  color: rgba(245,240,232,0.8);
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* ===== 人格配色变体 ===== */
+.persona-calm .result-badge { background: linear-gradient(135deg, rgba(100,180,200,0.3), rgba(60,120,160,0.3)); border: 1px solid rgba(100,180,200,0.4); }
+.persona-calm .result-badge svg { color: #6cb8c8; }
+.persona-calm .result-section-title .dot { background: #6cb8c8; }
+.persona-calm .result-name { background: linear-gradient(135deg, #f5f0e8, #6cb8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.persona-soft .result-badge { background: linear-gradient(135deg, rgba(232,180,184,0.3), rgba(200,140,160,0.3)); border: 1px solid rgba(232,180,184,0.4); }
+.persona-soft .result-badge svg { color: #e8b4b8; }
+.persona-soft .result-section-title .dot { background: #e8b4b8; }
+.persona-soft .result-name { background: linear-gradient(135deg, #f5f0e8, #e8b4b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.persona-deep .result-badge { background: linear-gradient(135deg, rgba(168,147,212,0.3), rgba(100,80,160,0.3)); border: 1px solid rgba(168,147,212,0.4); }
+.persona-deep .result-badge svg { color: #a899d4; }
+.persona-deep .result-section-title .dot { background: #a899d4; }
+.persona-deep .result-name { background: linear-gradient(135deg, #f5f0e8, #a899d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.persona-blaze .result-badge { background: linear-gradient(135deg, rgba(230,150,80,0.3), rgba(200,100,60,0.3)); border: 1px solid rgba(230,150,80,0.4); }
+.persona-blaze .result-badge svg { color: #e69650; }
+.persona-blaze .result-section-title .dot { background: #e69650; }
+.persona-blaze .result-name { background: linear-gradient(135deg, #f5f0e8, #e69650); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.persona-cloud .result-badge { background: linear-gradient(135deg, rgba(150,180,220,0.3), rgba(120,150,200,0.3)); border: 1px solid rgba(150,180,220,0.4); }
+.persona-cloud .result-badge svg { color: #96b4dc; }
+.persona-cloud .result-section-title .dot { background: #96b4dc; }
+.persona-cloud .result-name { background: linear-gradient(135deg, #f5f0e8, #96b4dc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.persona-artisan .result-badge { background: linear-gradient(135deg, rgba(120,180,140,0.3), rgba(80,140,110,0.3)); border: 1px solid rgba(120,180,140,0.4); }
+.persona-artisan .result-badge svg { color: #78b48c; }
+.persona-artisan .result-section-title .dot { background: #78b48c; }
+.persona-artisan .result-name { background: linear-gradient(135deg, #f5f0e8, #78b48c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.persona-prism .result-badge { background: linear-gradient(135deg, rgba(200,150,220,0.3), rgba(140,180,220,0.3)); border: 1px solid rgba(200,150,220,0.4); }
+.persona-prism .result-badge svg { color: #c896dc; }
+.persona-prism .result-section-title .dot { background: #c896dc; }
+.persona-prism .result-name { background: linear-gradient(135deg, #f5f0e8, #c896dc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.persona-moon .result-badge { background: linear-gradient(135deg, rgba(220,220,230,0.3), rgba(160,160,180,0.3)); border: 1px solid rgba(220,220,230,0.4); }
+.persona-moon .result-badge svg { color: #dcdce6; }
+.persona-moon .result-section-title .dot { background: #dcdce6; }
+.persona-moon .result-name { background: linear-gradient(135deg, #f5f0e8, #dcdce6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ===== 首页文字链接按钮 ===== */
+.btn-text-link {
+  background: none;
+  border: none;
+  color: rgba(245,240,232,0.5);
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-family: 'Noto Sans SC', sans-serif;
+  transition: color 0.2s ease;
+  letter-spacing: 1px;
+}
+.btn-text-link:hover { color: #d4a373; }
+
+/* ===== 人格图鉴页 ===== */
+.gallery-view {
+  justify-content: flex-start;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.gallery-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.gallery-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 900;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #f5f0e8, #d4a373);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gallery-subtitle {
+  font-size: 14px;
+  color: rgba(245,240,232,0.5);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.gallery-grid {
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.gallery-card {
+  padding: 28px 24px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  transition: all 0.25s ease;
+  cursor: default;
+}
+.gallery-card:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+.gallery-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.gallery-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+.gallery-card-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.gallery-card-name-en {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(245,240,232,0.4);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+.gallery-card-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(245,240,232,0.6);
+  font-weight: 300;
+  margin-bottom: 14px;
+}
+.gallery-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.gallery-card-tags span {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.05);
+  color: rgba(245,240,232,0.5);
+}
+.gallery-card.persona-calm .gallery-card-icon { background: linear-gradient(135deg, rgba(108,184,200,0.2), rgba(60,120,160,0.2)); border: 1px solid rgba(108,184,200,0.3); }
+.gallery-card.persona-calm .gallery-card-icon svg { color: #6cb8c8; }
+.gallery-card.persona-calm .gallery-card-name { color: #8ec8d8; }
+.gallery-card.persona-soft .gallery-card-icon { background: linear-gradient(135deg, rgba(232,180,184,0.2), rgba(200,140,160,0.2)); border: 1px solid rgba(232,180,184,0.3); }
+.gallery-card.persona-soft .gallery-card-icon svg { color: #e8b4b8; }
+.gallery-card.persona-soft .gallery-card-name { color: #f0c8cc; }
+.gallery-card.persona-deep .gallery-card-icon { background: linear-gradient(135deg, rgba(168,147,212,0.2), rgba(100,80,160,0.2)); border: 1px solid rgba(168,147,212,0.3); }
+.gallery-card.persona-deep .gallery-card-icon svg { color: #a899d4; }
+.gallery-card.persona-deep .gallery-card-name { color: #b8a8e4; }
+.gallery-card.persona-blaze .gallery-card-icon { background: linear-gradient(135deg, rgba(230,150,80,0.2), rgba(200,100,60,0.2)); border: 1px solid rgba(230,150,80,0.3); }
+.gallery-card.persona-blaze .gallery-card-icon svg { color: #e69650; }
+.gallery-card.persona-blaze .gallery-card-name { color: #f0a860; }
+.gallery-card.persona-cloud .gallery-card-icon { background: linear-gradient(135deg, rgba(150,180,220,0.2), rgba(120,150,200,0.2)); border: 1px solid rgba(150,180,220,0.3); }
+.gallery-card.persona-cloud .gallery-card-icon svg { color: #96b4dc; }
+.gallery-card.persona-cloud .gallery-card-name { color: #a8c4e8; }
+.gallery-card.persona-artisan .gallery-card-icon { background: linear-gradient(135deg, rgba(120,180,140,0.2), rgba(80,140,110,0.2)); border: 1px solid rgba(120,180,140,0.3); }
+.gallery-card.persona-artisan .gallery-card-icon svg { color: #78b48c; }
+.gallery-card.persona-artisan .gallery-card-name { color: #8ec8a0; }
+.gallery-card.persona-prism .gallery-card-icon { background: linear-gradient(135deg, rgba(200,150,220,0.2), rgba(140,180,220,0.2)); border: 1px solid rgba(200,150,220,0.3); }
+.gallery-card.persona-prism .gallery-card-icon svg { color: #c896dc; }
+.gallery-card.persona-prism .gallery-card-name { color: #d8a8e8; }
+.gallery-card.persona-moon .gallery-card-icon { background: linear-gradient(135deg, rgba(220,220,230,0.2), rgba(160,160,180,0.2)); border: 1px solid rgba(220,220,230,0.3); }
+.gallery-card.persona-moon .gallery-card-icon svg { color: #dcdce6; }
+.gallery-card.persona-moon .gallery-card-name { color: #e8e8f0; }
+
+.gallery-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 480px) {
+  .view { padding: 24px 20px; }
+  .quiz-option { padding: 16px 18px; font-size: 14px; }
+  .result-sections { gap: 12px; }
+  .result-section { padding: 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="bg-stars"></div>
+
+<!-- ===== 首页 ===== -->
+<section id="view-landing" class="view active">
+  <div class="landing-eyebrow">WORKPLACE PERSONALITY</div>
+  <h1 class="landing-title">你的职场人格<br>是什么模样？</h1>
+  <p class="landing-subtitle">12道题，看清你在职场里的真实样子。<br>不是又一个MBTI，是专属于你的职场生存图鉴。</p>
+  <div class="landing-visual">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+  </div>
+  <button class="btn-primary" onclick="startQuiz()">开始测试</button>
+  <button class="btn-text-link" onclick="showGallery()">先看看8种人格图鉴 →</button>
+  <div class="landing-tags">
+    <span class="landing-tag">#职场人格</span>
+    <span class="landing-tag">#心理测试</span>
+    <span class="landing-tag">#社交分享</span>
+  </div>
+</section>
+
+<!-- ===== 答题页 ===== -->
+<section id="view-quiz" class="view">
+  <div class="quiz-header">
+    <div class="quiz-progress-label">
+      <span>测试进度</span>
+      <span id="progress-text">1 / 12</span>
+    </div>
+    <div class="quiz-progress-bar">
+      <div class="quiz-progress-fill" id="progress-fill" style="width: 8%"></div>
+    </div>
+  </div>
+  <h2 class="quiz-question" id="question-text"></h2>
+  <div class="quiz-options" id="options-container"></div>
+</section>
+
+<!-- ===== 结果页 ===== -->
+<section id="view-result" class="view result-view" data-persona="">
+  <div class="result-badge" id="result-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"></svg>
+  </div>
+  <div class="result-eyebrow">YOUR WORKPLACE PERSONALITY</div>
+  <h1 class="result-name" id="result-name"></h1>
+  <div class="result-name-en" id="result-name-en"></div>
+  <div class="result-tags" id="result-tags"></div>
+  <p class="result-desc" id="result-desc"></p>
+  <div class="result-sections">
+    <div class="result-section">
+      <div class="result-section-title"><span class="dot"></span>你的职场优势</div>
+      <p id="result-strength"></p>
+    </div>
+    <div class="result-section">
+      <div class="result-section-title"><span class="dot"></span>你可能遇到的挑战</div>
+      <p id="result-challenge"></p>
+    </div>
+    <div class="result-section">
+      <div class="result-section-title"><span class="dot"></span>给你的一句话建议</div>
+      <p id="result-advice"></p>
+    </div>
+  </div>
+  <div class="result-actions">
+    <button class="btn-primary" onclick="shareResult()">分享我的结果</button>
+    <button class="btn-secondary" onclick="retakeQuiz()">重新测试</button>
+  </div>
+</section>
+
+<!-- ===== 人格图鉴页 ===== -->
+<section id="view-gallery" class="view gallery-view">
+  <div class="gallery-header">
+    <h1 class="gallery-title">8种职场人格图鉴</h1>
+    <p class="gallery-subtitle">看看哪一个最像你</p>
+  </div>
+  <div class="gallery-grid" id="gallery-grid"></div>
+  <div class="gallery-back">
+    <button class="btn-primary" onclick="startQuiz()">去测测我是哪种</button>
+    <button class="btn-text-link" onclick="showView('view-landing')">← 返回首页</button>
+  </div>
+</section>
+
+<script>
+// ===== 人格数据 =====
+const personas = {
+  calm: {
+    name: '冷静掌舵人',
+    nameEn: 'THE CALM HELMSMAN',
+    class: 'persona-calm',
+    tags: ['#运筹帷幄', '#不动声色', '#天生领袖'],
+    desc: '你是那种天塌下来也面不改色的人。在混乱中建立秩序，是你与生俱来的能力。别人慌的时候，你已经在心里列出了三套方案。',
+    strength: '决策力强、情绪稳定、有远见。团队里有你在，大家就觉得安心。',
+    challenge: '有时太克制，让人觉得有距离感。你不说，别人就不知道你在想什么。',
+    advice: '偶尔表达柔软的一面，团队会更愿意靠近你。',
+    icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>'
+  },
+  soft: {
+    name: '柔甲外交官',
+    nameEn: 'THE SOFT DIPLOMAT',
+    class: 'persona-soft',
+    tags: ['#以柔克刚', '#情绪稳定', '#人际粘合剂'],
+    desc: '你从不用强硬的方式解决问题，但你总能得到你想要的结果。温柔是你的铠甲，也是你的武器。跟你打交道，所有人都觉得舒服。',
+    strength: '共情力强、善于沟通、化解冲突。你是团队里不可或缺的润滑剂。',
+    challenge: '有时太在意别人感受，忽略了自己的需求。善良如果没有边界，就容易变成消耗。',
+    advice: '学会说"不"，你的善良需要带点锋芒。',
+    icon: '<path d="M12 2L4 7v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7l-8-5z"/><path d="M9 12l2 2 4-4"/>'
+  },
+  deep: {
+    name: '深海谋士',
+    nameEn: 'THE DEEP STRATEGIST',
+    class: 'persona-deep',
+    tags: ['#洞察一切', '#谋定后动', '#幕后智囊'],
+    desc: '你话不多，但每一句都有分量。你习惯在暗处观察，等所有人都说完了，才说出那句改变局面的话。沉默不是无话可说，是在收集信息。',
+    strength: '洞察力强、思考深入、精准判断。你总能看到别人看不到的风险和机会。',
+    challenge: '太被动，有时错过主动出击的机会。你的好想法，可能没人知道。',
+    advice: '适时展现自己，你的想法值得被更多人听到。',
+    icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>'
+  },
+  blaze: {
+    name: '赤焰先锋',
+    nameEn: 'THE BLAZING PIONEER',
+    class: 'persona-blaze',
+    tags: ['#说干就干', '#敢闯敢拼', '#团队发动机'],
+    desc: '你是团队里那个永远第一个举手的人。不怕犯错，只怕没试过。你的热情会感染身边的每一个人，有你在的地方就不会冷场。',
+    strength: '行动力强、充满激情、敢于创新。你是推动事情发生的那个人。',
+    challenge: '有时太急，忽略了细节和风险。冲得快，也容易摔得疼。',
+    advice: '慢下来思考三秒，你的行动会更有力量。',
+    icon: '<path d="M12 2c1 4-2 5-2 9a4 4 0 008 0c0-2-1-3-1-3s3 2 3 6a7 7 0 01-14 0c0-5 4-7 6-12z"/>'
+  },
+  cloud: {
+    name: '云朵缓冲带',
+    nameEn: 'THE CLOUD BUFFER',
+    class: 'persona-cloud',
+    tags: ['#情绪充电宝', '#温柔而有力量', '#团队大家长'],
+    desc: '你是团队的情绪避风港。有人不开心了找你，有人迷茫了找你。你像一片柔软的云，接住所有人的情绪。跟你待在一起，就觉得安心。',
+    strength: '温暖治愈、善于支持、让人有安全感。你是团队里的情绪支柱。',
+    challenge: '承担了太多别人的情绪，容易内耗。别人的雨，都下到了你这里。',
+    advice: '先照顾好自己，再温暖别人。你也需要被接住。',
+    icon: '<path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>'
+  },
+  artisan: {
+    name: '毫米级匠人',
+    nameEn: 'THE MILLIMETER ARTISAN',
+    class: 'persona-artisan',
+    tags: ['#细节控', '#品质执念', '#交付即作品'],
+    desc: '你对"差不多"零容忍。别人觉得已经很好了，你觉得还差0.1毫米。正是这种执念，让你做出来的东西永远有品质保障。交到你手上的事，就是放心。',
+    strength: '严谨细致、追求卓越、可靠可信。你做出来的东西，就是品质的代名词。',
+    challenge: '太追求完美，有时效率会受影响。0.1毫米的差距，值不值得花三倍时间？',
+    advice: '学会区分"需要完美"和"足够好就行"，把精力留给真正重要的事。',
+    icon: '<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>'
+  },
+  prism: {
+    name: '棱镜多面手',
+    nameEn: 'THE PRISM SHAPESHIFTER',
+    class: 'persona-prism',
+    tags: ['#到哪都能活', '#社交货币', '#六边形战士'],
+    desc: '你是天生的多面手。跟技术人员聊技术，跟销售人员聊客户，你总能找到共同话题。适应力是你最大的超能力，换个环境你依然如鱼得水。',
+    strength: '适应力强、社交广泛、学习快。你是真正的六边形战士。',
+    challenge: '兴趣太广，有时不够聚焦。什么都能做，但什么都不是最精的那个。',
+    advice: '找到一个你真正热爱的方向，深耕下去会更有成就感。',
+    icon: '<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>'
+  },
+  moon: {
+    name: '月球独行家',
+    nameEn: 'THE MOON LONER',
+    class: 'persona-moon',
+    tags: ['#灵魂自由', '#审美偏执', '#不被定义'],
+    desc: '你不太在意办公室政治，也不想争什么职级。你只想做自己认为有价值的事。在自己的世界里，你就是国王。别人觉得你独行，其实你只是在自己的轨道上运行。',
+    strength: '独立思考、有创造力、审美独特。你有自己的标准，不随波逐流。',
+    challenge: '太独行，有时会错过团队协作的机会。你的世界很精彩，但别人进不来。',
+    advice: '偶尔融入一下集体，你会发现团队也有惊喜。',
+    icon: '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>'
+  }
+};
+
+// ===== 题目数据 =====
+const questions = [
+  {
+    q: '周一早上刚到公司，你发现这周的工作量突然翻倍了。你的第一反应是？',
+    options: [
+      { text: '立刻列优先级清单，按部就班推进', scores: { calm: 2, artisan: 1 } },
+      { text: '先深呼吸，告诉自己一件一件来就好', scores: { cloud: 2, soft: 1 } },
+      { text: '有点兴奋——越忙越能激发我的潜力', scores: { blaze: 2, prism: 1 } },
+      { text: '表面平静，内心已经在推演最优路径', scores: { deep: 2, moon: 1 } }
+    ]
+  },
+  {
+    q: '开会时，你发表了一个观点，但立刻被两位同事反驳了。你会？',
+    options: [
+      { text: '不慌不忙，有条理地陈述自己的依据', scores: { calm: 2, deep: 1 } },
+      { text: '先肯定对方的合理之处，再慢慢引导到我的想法', scores: { soft: 2, cloud: 1 } },
+      { text: '直接说"我们不如试试看谁的方案效果好"', scores: { blaze: 2, prism: 1 } },
+      { text: '笑一笑说"你们说得也有道理"，然后回到座位继续做自己的事', scores: { moon: 2, artisan: 1 } }
+    ]
+  },
+  {
+    q: '你的领导交给你一个任务，但你觉得这个方向有问题。你会？',
+    options: [
+      { text: '整理好详细的分析和替代方案，找领导正式沟通', scores: { calm: 2, artisan: 1 } },
+      { text: '先委婉地表达自己的担忧，看看领导的想法', scores: { soft: 2, cloud: 1 } },
+      { text: '直接说"我觉得这样可能不太对，不如我们换个思路"', scores: { blaze: 2, prism: 1 } },
+      { text: '嘴上答应，心里已经在想怎么用自己的方式做出来', scores: { deep: 2, moon: 1 } }
+    ]
+  },
+  {
+    q: '两个同事因为工作方案吵起来了，都来找你评理。你会？',
+    options: [
+      { text: '客观分析两边的优劣，给出一个最优解', scores: { calm: 2, deep: 1 } },
+      { text: '先安抚双方情绪，再慢慢找到大家都能接受的方案', scores: { soft: 2, cloud: 1 } },
+      { text: '说"别吵了，我们找个会议室演示一下就知道了"', scores: { blaze: 2, prism: 1 } },
+      { text: '默默退到一边，心里觉得这种争论很消耗能量', scores: { moon: 2, artisan: 1 } }
+    ]
+  },
+  {
+    q: '关于职业发展，你更认同哪种说法？',
+    options: [
+      { text: '要持续向上，成为决策者才是成功', scores: { calm: 2, blaze: 1 } },
+      { text: '能在自己的岗位上做到不可替代就很好', scores: { soft: 2, cloud: 1 } },
+      { text: '最重要的是不断学习新东西，保持好奇心', scores: { prism: 2, deep: 1 } },
+      { text: '我不想被职级定义，我只想做自己认为有价值的事', scores: { moon: 2, artisan: 1 } }
+    ]
+  },
+  {
+    q: '工作中受了委屈，你会怎么处理？',
+    options: [
+      { text: '不会表现出来，私下找个时间消化', scores: { calm: 2, deep: 1 } },
+      { text: '找信任的朋友聊一聊，哭完就好了', scores: { cloud: 2, soft: 1 } },
+      { text: '化悲愤为动力，做得更好给他们看', scores: { blaze: 2, prism: 1 } },
+      { text: '写下来，或者做点别的事转移注意力', scores: { moon: 2, artisan: 1 } }
+    ]
+  },
+  {
+    q: '在办公室里，你通常是哪种角色？',
+    options: [
+      { text: '大家有问题都会来找我商量', scores: { calm: 2, cloud: 1 } },
+      { text: '我和谁都能聊得来，但没有特别亲密的关系', scores: { soft: 2, prism: 1 } },
+      { text: '我是团队的气氛组，有我在就不会冷场', scores: { blaze: 2, cloud: 1 } },
+      { text: '我不太参与办公室政治，做好自己的事最重要', scores: { deep: 2, moon: 1, artisan: 1 } }
+    ]
+  },
+  {
+    q: '团队项目要分工了，你最想负责哪部分？',
+    options: [
+      { text: '整体规划和进度把控', scores: { calm: 2, deep: 1 } },
+      { text: '协调大家的关系，确保每个人都舒服', scores: { soft: 2, cloud: 1 } },
+      { text: '最难最有挑战性的那部分', scores: { blaze: 2, artisan: 1 } },
+      { text: '自由发挥的创意部分', scores: { prism: 2, moon: 1 } }
+    ]
+  },
+  {
+    q: '你认为职场中最重要的能力是什么？',
+    options: [
+      { text: '决策力——关键时刻能拍板', scores: { calm: 2, blaze: 1 } },
+      { text: '共情力——能理解别人的需求和情绪', scores: { soft: 2, cloud: 1 } },
+      { text: '洞察力——能看到别人看不到的机会和风险', scores: { deep: 2, prism: 1 } },
+      { text: '专业力——把一件事做到极致', scores: { artisan: 2, moon: 1 } }
+    ]
+  },
+  {
+    q: '周末如果不用工作，你最想怎么过？',
+    options: [
+      { text: '安排得满满当当，做有意义的事', scores: { blaze: 2, prism: 1 } },
+      { text: '约朋友吃饭逛街，热热闹闹的', scores: { cloud: 2, soft: 1 } },
+      { text: '在家待着，看书追剧做自己的事', scores: { moon: 2, deep: 1 } },
+      { text: '整理房间，把生活也安排得井井有条', scores: { calm: 2, artisan: 1 } }
+    ]
+  },
+  {
+    q: '你收到一份超出你能力范围的工作，你会？',
+    options: [
+      { text: '接下来，边学边做，总能搞定', scores: { blaze: 2, prism: 1 } },
+      { text: '接下来，但会找有经验的人请教', scores: { soft: 2, cloud: 1 } },
+      { text: '先评估一下，告诉领导我需要什么支持', scores: { calm: 2, deep: 1 } },
+      { text: '坦诚说我不太擅长这个，能不能找更合适的人', scores: { moon: 2, artisan: 1 } }
+    ]
+  },
+  {
+    q: '你觉得自己最大的职场优势是？',
+    options: [
+      { text: '遇到突发状况永远不慌', scores: { calm: 2, deep: 1 } },
+      { text: '跟谁都能快速建立信任', scores: { soft: 2, prism: 1 } },
+      { text: '永远有使不完的劲', scores: { blaze: 2, cloud: 1 } },
+      { text: '做出来的东西品质就是有保障', scores: { artisan: 2, moon: 1 } }
+    ]
+  }
+];
+
+// ===== 状态 =====
+let currentQuestion = 0;
+let scores = {};
+
+// ===== 视图切换 =====
+function showView(viewId) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  const view = document.getElementById(viewId);
+  view.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ===== 开始测试 =====
+function startQuiz() {
+  currentQuestion = 0;
+  scores = {};
+  showView('view-quiz');
+  renderQuestion();
+}
+
+// ===== 渲染题目 =====
+function renderQuestion() {
+  const q = questions[currentQuestion];
+  const total = questions.length;
+
+  // 更新进度
+  document.getElementById('progress-text').textContent = (currentQuestion + 1) + ' / ' + total;
+  document.getElementById('progress-fill').style.width = ((currentQuestion + 1) / total * 100) + '%';
+
+  // 题目
+  const questionEl = document.getElementById('question-text');
+  const optionsEl = document.getElementById('options-container');
+
+  questionEl.classList.remove('fade-in');
+  optionsEl.classList.remove('fade-in');
+  void questionEl.offsetWidth; // 触发重排
+  questionEl.classList.add('fade-in');
+  optionsEl.classList.add('fade-in');
+
+  questionEl.textContent = q.q;
+
+  // 选项
+  optionsEl.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-option';
+    div.innerHTML = '<span class="quiz-option-letter">' + letters[i] + '</span>' + opt.text;
+    div.onclick = () => selectOption(i);
+    optionsEl.appendChild(div);
+  });
+}
+
+// ===== 选择选项 =====
+function selectOption(index) {
+  const q = questions[currentQuestion];
+  const selected = q.options[index];
+
+  // 计分
+  for (const [persona, score] of Object.entries(selected.scores)) {
+    scores[persona] = (scores[persona] || 0) + score;
+  }
+
+  // 选中动画
+  const options = document.querySelectorAll('.quiz-option');
+  options.forEach((opt, i) => {
+    if (i === index) opt.classList.add('selected');
+    opt.style.pointerEvents = 'none';
+  });
+
+  // 延迟进入下一题
+  setTimeout(() => {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }, 400);
+}
+
+// ===== 计算结果 =====
+function calculateResult() {
+  let maxScore = -1;
+  let result = 'calm';
+  for (const [persona, score] of Object.entries(scores)) {
+    if (score > maxScore) {
+      maxScore = score;
+      result = persona;
+    }
+  }
+  return result;
+}
+
+// ===== 展示结果 =====
+function showResult() {
+  const resultKey = calculateResult();
+  const persona = personas[resultKey];
+  const resultView = document.getElementById('view-result');
+
+  // 设置人格配色class
+  resultView.setAttribute('data-persona', resultKey);
+  resultView.className = 'view result-view active ' + persona.class;
+
+  // 填充内容
+  document.getElementById('result-name').textContent = persona.name;
+  document.getElementById('result-name-en').textContent = persona.nameEn;
+  document.getElementById('result-desc').textContent = persona.desc;
+  document.getElementById('result-strength').textContent = persona.strength;
+  document.getElementById('result-challenge').textContent = persona.challenge;
+  document.getElementById('result-advice').textContent = persona.advice;
+
+  // 徽章图标
+  document.querySelector('#result-badge svg').innerHTML = persona.icon;
+
+  // 标签
+  const tagsEl = document.getElementById('result-tags');
+  tagsEl.innerHTML = '';
+  persona.tags.forEach(tag => {
+    const span = document.createElement('span');
+    span.className = 'result-tag';
+    span.textContent = tag;
+    tagsEl.appendChild(span);
+  });
+
+  showView('view-result');
+}
+
+// ===== 重新测试 =====
+function retakeQuiz() {
+  startQuiz();
+}
+
+// ===== 人格图鉴 =====
+function showGallery() {
+  renderGallery();
+  showView('view-gallery');
+}
+
+function renderGallery() {
+  const grid = document.getElementById('gallery-grid');
+  grid.innerHTML = '';
+  const order = ['calm', 'soft', 'deep', 'blaze', 'cloud', 'artisan', 'prism', 'moon'];
+  order.forEach(key => {
+    const p = personas[key];
+    const card = document.createElement('div');
+    card.className = 'gallery-card ' + p.class;
+    card.innerHTML =
+      '<div class="gallery-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">' + p.icon + '</svg></div>' +
+      '<div class="gallery-card-name">' + p.name + '</div>' +
+      '<div class="gallery-card-name-en">' + p.nameEn + '</div>' +
+      '<div class="gallery-card-desc">' + p.desc + '</div>' +
+      '<div class="gallery-card-tags">' + p.tags.map(t => '<span>' + t + '</span>').join('') + '</div>';
+    grid.appendChild(card);
+  });
+}
+
+// ===== 分享 =====
+function shareResult() {
+  const resultKey = document.getElementById('view-result').getAttribute('data-persona');
+  const persona = personas[resultKey];
+  const text = '我是「' + persona.name + '」！' + persona.tags.join(' ') + ' 你的职场人格是什么？';
+
+  if (navigator.share) {
+    navigator.share({
+      title: '我的职场人格测试结果',
+      text: text,
+      url: window.location.href
+    }).catch(() => {});
+  } else {
+    // 复制到剪贴板
+    navigator.clipboard.writeText(text + ' ' + window.location.href).then(() => {
+      alert('结果已复制，快去分享到小红书/朋友圈吧！');
+    }).catch(() => {
+      alert(text);
+    });
+  }
+}
+
+// ===== 初始化 =====
+showView('view-landing');
+</script>
+
+</body>
+</html>
